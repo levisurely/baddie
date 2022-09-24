@@ -8,3 +8,11 @@ uh yeaaaa lmao
 Stefaunk12 [here](https://github.com/Stefanuk12/ROBLOX)
 
 GhostPlayer [here](https://github.com/GhostPlayer352/Test4)
+
+MrScripter666 [here](https://github.com/MrScripter666/Roblox-Ultimate-Script-Mashup)
+
+PhoenixAceVFX [here](https://github.com/PhoenixAceVFX/Roblox-Scripts)
+
+quiloos39 [here](https://github.com/quiloos39/Roblox)
+
+racemodex [here](https://github.com/racemodex/my-scripts)
