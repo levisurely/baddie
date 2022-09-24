@@ -17,13 +17,13 @@ end
 if not game.PlaceId == Supported  then
 game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "Script Not Found",
-	Text = "No Script For Game ID"..game.PlaceId,
+	Text = "No Script For Game ID "..game.PlaceId,
 	Icon = "rbxassetid://8447740059"
 })
 else
 game:GetService("StarterGui"):SetCore("SendNotification",{
 	Title = "Script Found!", -- Required
-	Text = "Found Script For Game ID"..game.PlaceId,
+	Text = "Found Script For Game ID "..game.PlaceId,
 	Icon = "rbxassetid://8447740059"
 })
 end
