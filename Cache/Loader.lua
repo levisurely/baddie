@@ -13,6 +13,7 @@ local Games = {
     [7378813434] = "CottonObby",
     [9228830112] = "ChocolateObby",
     [7341058233] = "FunObby",
+    [9304358188] = "FindTheMemes",
     [8328774140] = "DreamObby";
 };
 
