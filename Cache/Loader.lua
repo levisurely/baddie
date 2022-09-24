@@ -14,7 +14,8 @@ local Games = {
     [9228830112] = "ChocolateObby",
     [7341058233] = "FunObby",
     [9304358188] = "FindTheMemes",
-    [8328774140] = "DreamObby";
+    [8328774140] = "DreamObby",
+    [10652184030] = "JumpClicker";
 };
 
 local Supported = Games[game.PlaceId] or false;
