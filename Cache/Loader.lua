@@ -9,7 +9,11 @@ local Games = {
     [8980446061] = "ultra_beauty",
     [9648883891] = "FestivalTycoon",
     [9551640993] = "ms2",
-    [7952502098] = "ImpossibleGlassBridgeObby";
+    [7952502098] = "ImpossibleGlassBridgeObby",
+    [7378813434] = "CottonObby",
+    [9228830112] = "ChocolateObby",
+    [7341058233] = "FunObby",
+    [8328774140] = "DreamObby";
 };
 
 local Supported = Games[game.PlaceId] or false;
