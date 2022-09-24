@@ -1,4 +1,5 @@
 local Games = {
+    [2686040248] = "0bid0MathObby",
     [9579974235] = "FindFloppas",
     [3587619225] = "MegaEasyObby",
     [9616411936] = "BlueMoonCollect",
