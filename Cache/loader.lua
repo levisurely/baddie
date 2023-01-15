@@ -7,6 +7,7 @@ local Games = {
     [9616411936] = "ManCityBlueMoon", --Man City Blue Moon
     [12996397] = "megafunobby", --Mega Fun Obby
     [9940051005] = "BloxLegends", --Blox Legends
+    [6403373529] = "slapbattles", --Slap Battles
     [9757510382] = "dalyanstradesimulator", --Dylan's Trade Simulator
     [8980446061] = "ultrabeauty", --Ultra Beauty
     [9648883891] = "festivaltycoon", --Festive Tycoon
