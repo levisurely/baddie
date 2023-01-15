@@ -2,6 +2,7 @@ local Games = {
     [2686040248] = "0bid0MathObby", --Math Obby By 0bid0
     [9579974235] = "findthefloppas", --Find The Floppa Morphs
     [10042496417] = "findthezombies", --Find The Zombie Morphs
+    [10955145868] = "findtheducks", --Find The Duck Morphs
     [3587619225] = "megaeasyobby", --Mega Easy Obby
     [9616411936] = "ManCityBlueMoon", --Man City Blue Moon
     [12996397] = "megafunobby", --Mega Fun Obby
