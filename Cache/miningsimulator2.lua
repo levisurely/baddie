@@ -13,7 +13,7 @@ _G.Color = Color3.new(0.129412, 0.129412, 0.129412);
 _G.EggSel = nil;
 _G.HatchHook = "";
 _G.CrateHook = "";
-local Setup = loadstring(game:HttpGet("https://pastebin.com/raw/qiPTxmAr"))();
+local Setup = loadstring(game:HttpGet("https://raw.githubusercontent.com/catgirIz/baddie/main/Cache/UI.lua?token=GHSAT0AAAAAAB26FXJQLL5V4HVVUPGVAEFAY6EN6XQ"))();
 local Codes = {
     ["Release"] = true,
     ["FreeEgg"] = true,
@@ -445,14 +445,6 @@ RedeemCodes.MouseButton1Down:Connect(function()
     RedeemCodes.Text = "Redeemed All Codes!";
     wait(2);
     RedeemCodes.Text = "Redeem All Codes";
-end);
-
--- Rejoin Button
-local RejoinButton = Setup:CreateButton(GameUI, "Rejoin", Color3.new(1, 1, 0));
-
-RejoinButton.MouseButton1Down:Connect(function()
-    RejoinButton.Text = "Rejoining...";
-    game:GetService("TeleportService"):Teleport(game.GameId);
 end);
 
 -- Auto Mine

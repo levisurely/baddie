@@ -243,6 +243,9 @@ local Button4=UI:CreateBox(GameUI, "Enter Time Here", Color3.new(1, 1, 0));
 --Music Textbox
 local Button5=UI:CreateBox(GameUI, "Enter Audio ID Here", Color3.new(1, 1, 0));
 
+-- Rejoin Button
+local RejoinButton = Setup:CreateButton(GameUI, "Rejoin", Color3.new(1, 1, 0));
+
 --Theme Button
 local THEMEButton1=UI:CreateButton(UIUI, "Theme: Dark", Color3.new(0, 0.666667, 1));
 
@@ -266,6 +269,12 @@ end);
 
 CButton3.MouseButton1Down:Connect(function()
 	GameUI.Parent.Visible=not GameUI.Parent.Visible;
+end);
+
+
+RejoinButton.MouseButton1Down:Connect(function()
+    RejoinButton.Text = "Rejoining...";
+    game:GetService("TeleportService"):Teleport(game.GameId);
 end);
 
 THEMEButton1.MouseButton1Down:Connect(function()

@@ -9,7 +9,7 @@ local Headers = {
 };
 _G.Color = Color3.new(0.129412, 0.129412, 0.129412);
 _G.EggSel = nil;
-local Setup = loadstring(game:HttpGet("https://pastebin.com/raw/qiPTxmAr"))();
+local Setup = loadstring(game:HttpGet("https://raw.githubusercontent.com/catgirIz/baddie/main/Cache/UI.lua?token=GHSAT0AAAAAAB26FXJQLL5V4HVVUPGVAEFAY6EN6XQ"))();
 local Codes = {
     ["10KLIKES"] = true,
     ["1KLIKES"] = true,
