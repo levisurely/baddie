@@ -24,6 +24,7 @@ local Games = {
     [10652184030] = "jumpclicker"; --Jump Clicker
 };
 
+local function Check()
 local Supported = Games[game.PlaceId] or false;
 if Supported ~= false then
     loadstring(game:HttpGet('https://raw.githubusercontent.com/catgirIz/baddie/main/Cache/'..Supported..'.lua'))();
@@ -32,13 +33,24 @@ end;
 if not game.PlaceId == Supported then
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Script Not Found",
+        Duration = "300";
+        Button1 = "Retry";
         Text = "No Script For Game ID " .. game.PlaceId,
         Icon = "rbxassetid://8447740059";
     });
 else
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Script Found!",
+         Duration = "300";
         Text = "Found Script For Game ID " .. game.PlaceId,
         Icon = "rbxassetid://8447740059";
     });
 end;
+    end;
+
+local function Callback(answer)
+    Check();
+end;
+
+local Bindable = Instance.new("BindableFunction");
+Bindable.OnInvoke = Callback;
