@@ -54,3 +54,4 @@ end;
 
 local Bindable = Instance.new("BindableFunction");
 Bindable.OnInvoke = Callback;
+Check();
