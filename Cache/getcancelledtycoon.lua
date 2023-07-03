@@ -90,24 +90,19 @@ AutoCollect.MouseButton1Down:Connect(function()
 				elseif YourTycoon.StaticItems.Belt1.Collector.ProxPart.Amt.Value > 0 then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt1.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt1.Collector.ProxPart.ProximityPrompt);
-
-									elseif YourTycoon.StaticItems.Belt2.Collector.ProxPart.Amt.Value > 0 then
+				elseif YourTycoon.StaticItems.Belt2.Collector.ProxPart.Amt.Value > 0 then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt2.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt2.Collector.ProxPart.ProximityPrompt);
-
-									elseif YourTycoon.StaticItems.Belt3.Collector.ProxPart.Amt.Value > 0 then
+				elseif YourTycoon.StaticItems.Belt3.Collector.ProxPart.Amt.Value > 0 then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt3.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt3.Collector.ProxPart.ProximityPrompt);
-
-									elseif YourTycoon.StaticItems.Belt4.Collector.ProxPart.Amt.Value > 0 then
+				elseif YourTycoon.StaticItems.Belt4.Collector.ProxPart.Amt.Value > 0 then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt4.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt4.Collector.ProxPart.ProximityPrompt);
-
-									elseif YourTycoon.StaticItems.Belt5.Collector.ProxPart.Amt.Value > 0 then
+				elseif YourTycoon.StaticItems.Belt5.Collector.ProxPart.Amt.Value > 0 then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt5.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt5.Collector.ProxPart.ProximityPrompt);
-
-									elseif YourTycoon.StaticItems.Belt6.Collector.ProxPart.Amt.Value > 0 then
+				elseif YourTycoon.StaticItems.Belt6.Collector.ProxPart.Amt.Value > 0 then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt6.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt6.Collector.ProxPart.ProximityPrompt);
 				end;
@@ -200,8 +195,7 @@ AutoAP.MouseButton1Down:Connect(function()
 			while task.wait() do
 				if _G.AP == false then
 					break;
-				else
-					if game:GetService("Workspace").Tycoons.Tycoon5.StaticItems.Camera.MeshPart.Timer.TimerText == "￰"
+				elseif game:GetService("Workspace")).Tycoons.Tycoon5.StaticItems.Camera.MeshPart.Timer.TimerText == "" then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Camera.Part.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
