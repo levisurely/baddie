@@ -25,7 +25,7 @@ if YourTycoon == nil then
 		if v:IsA("Folder") then
 			if v:FindFirstChild("TycoonOwner") then
 				if v.TycoonOwner.Value == "None" then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Claim.Claim.CFrame;
+					Player.Character.HumanoidRootPart.CFrame = v.Claim.Claim.CFrame;
 					YourTycoon = v;
 					break;
 				end;
@@ -88,22 +88,22 @@ AutoCollect.MouseButton1Down:Connect(function()
 				if _G.AC == false then
 					break;
 				elseif YourTycoon.StaticItems.Belt1.Collector.ProxPart.Amt.Value > 0 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt1.Collector.ProxPart.CFrame;
+					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt1.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt1.Collector.ProxPart.ProximityPrompt);
 				elseif YourTycoon.StaticItems.Belt2.Collector.ProxPart.Amt.Value > 0 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt2.Collector.ProxPart.CFrame;
+					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt2.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt2.Collector.ProxPart.ProximityPrompt);
 				elseif YourTycoon.StaticItems.Belt3.Collector.ProxPart.Amt.Value > 0 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt3.Collector.ProxPart.CFrame;
+					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt3.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt3.Collector.ProxPart.ProximityPrompt);
 				elseif YourTycoon.StaticItems.Belt4.Collector.ProxPart.Amt.Value > 0 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt4.Collector.ProxPart.CFrame;
+					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt4.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt4.Collector.ProxPart.ProximityPrompt);
 				elseif YourTycoon.StaticItems.Belt5.Collector.ProxPart.Amt.Value > 0 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt5.Collector.ProxPart.CFrame;
+					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt5.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt5.Collector.ProxPart.ProximityPrompt);
 				elseif YourTycoon.StaticItems.Belt6.Collector.ProxPart.Amt.Value > 0 then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt6.Collector.ProxPart.CFrame;
+					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt6.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt6.Collector.ProxPart.ProximityPrompt);
 				end;
 			end;
@@ -195,8 +195,8 @@ AutoAP.MouseButton1Down:Connect(function()
 			while task.wait() do
 				if _G.AP == false then
 					break;
-				elseif (game:GetService("Workspace")).Tycoons.Tycoon5.StaticItems.Camera.MeshPart.Timer.TimerText == "" then
-					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Camera.Part.CFrame;
+				elseif tonumber((game:GetService("Players")).levisurely.PlayerGui.CutsceneHandler.Label2.Text) >= 1 then
+					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Camera.Part.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
 			end;
@@ -204,6 +204,34 @@ AutoAP.MouseButton1Down:Connect(function()
 	else
 		_G.AP = false;
 		AutoAP.Text = "Auto Apology: Off";
+	end;
+end);
+_G.ABF = false;
+local AutoABF = Setup:CreateButton(GameUI, "Auto Buy Follower Buttons: Off", Color3.new(1, 1, 0));
+AutoABF.MouseButton1Down:Connect(function()
+	if _G.ABF == false then
+		_G.ABF = true;
+		AutoABF.Text = "Auto Buy Follower Buttons: On";
+		coroutine.resume(coroutine.create(function()
+			while task.wait() do
+				if _G.ABF == false then
+					break;
+				else
+					for i, v in pairs(YourTycoon.FollowerAchievements:GetChildren()) do
+						if v:IsA("BasePart") then
+							if v:FindFirstChild("Cost") then
+								if v.Cost.Value >= Player.leaderstats.Haters.Value then
+									Player.Character.HumanoidRootPart.CFrame = v.CFrame;
+								end;
+							end;
+						end;
+					end;
+				end;
+			end;
+		end));
+	else
+		_G.ABF = false;
+		AutoABF.Text = "Auto Buy Follower Buttons: Off";
 	end;
 end);
 Setup:CreateClickSounds();
