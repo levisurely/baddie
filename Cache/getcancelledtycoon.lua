@@ -195,7 +195,7 @@ AutoAP.MouseButton1Down:Connect(function()
 			while task.wait() do
 				if _G.AP == false then
 					break;
-				elseif game:GetService("Workspace")).Tycoons.Tycoon5.StaticItems.Camera.MeshPart.Timer.TimerText == "" then
+				elseif (game:GetService("Workspace")).Tycoons.Tycoon5.StaticItems.Camera.MeshPart.Timer.TimerText == "" then
 					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Camera.Part.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
