@@ -155,4 +155,24 @@ AutoUAR.MouseButton1Down:Connect(function()
 		AutoUAR.Text = "Auto Upgrade AD Reveue: Off";
 	end;
 end);
+_G.AP = false;
+local AutoAP = Setup:CreateButton(GameUI, "Auto Apology: Off", Color3.new(1, 1, 0));
+AutoAP.MouseButton1Down:Connect(function()
+	if _G.AP == false then
+		_G.AP = true;
+		AutoAP.Text = "Auto Apology: On";
+		coroutine.resume(coroutine.create(function()
+			while wait() do
+				if _G.AP == false then
+					break;
+				else
+					fireproximityprompt((game:GetService("Workspace")).Tycoons.Tycoon2.StaticItems.Camera.MeshPart.ProximityPrompt);
+				end;
+			end;
+		end));
+	else
+		_G.AP = false;
+		AutoAP.Text = "Auto Apology: Off";
+	end;
+end);
 Setup:CreateClickSounds();
