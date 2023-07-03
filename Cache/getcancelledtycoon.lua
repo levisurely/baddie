@@ -87,7 +87,7 @@ AutoCollect.MouseButton1Down:Connect(function()
 			while task.wait() do
 				if _G.AC == false then
 					break;
-				elseif (YourTycoon.StaticItems.Belt1.Collector.ProxPart.Amt.Value > 0 then
+				elseif YourTycoon.StaticItems.Belt1.Collector.ProxPart.Amt.Value > 0 then
 					fireproximityprompt(YourTycoon.StaticItems.Belt1.Collector.ProxPart.ProximityPrompt);
 				end;
 			end;
