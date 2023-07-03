@@ -91,7 +91,7 @@ AutoCollect.MouseButton1Down:Connect(function()
 					fireproximityprompt(YourTycoon.StaticItems.Belt1.Collector.ProxPart.ProximityPrompt);
 				end;
 			end;
-		end));
+		end)));
 	else
 		_G.AC = false;
 		AutoCollect.Text = "Auto Collect: Off";
