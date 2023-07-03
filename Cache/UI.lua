@@ -42,8 +42,8 @@ print("skijack Loaded!");
 print("Starting skijack...");
 function UI:CreateLabel(Frame, Text, Color, Font)
 	local Xh = Instance.new("TextLabel");
-	Xh.Name = tostring(Text) or "huh";
 	Xh.Font = Font;
+	Xh.Name = tostring(Text) or "huh";
 	Xh.Text = Text;
 	Xh.TextScaled = true;
 	Xh.TextColor3 = Color;
@@ -100,6 +100,7 @@ end;
 function UI:CreateTitle(Frame, Text)
 	local jackTitle = Instance.new("TextLabel");
 	jackTitle.Font = Enum.Font.GothamBold;
+	jackTitle.Name = tostring(Text) or "huh";
 	jackTitle.Text = Text;
 	jackTitle.TextScaled = true;
 	jackTitle.TextColor3 = Color3.new(1, 1, 1);
