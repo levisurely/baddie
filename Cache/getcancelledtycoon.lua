@@ -219,7 +219,7 @@ AutoABF.MouseButton1Down:Connect(function()
 				else
 					for i, v in pairs(YourTycoon.FollowerAchievements:GetChildren()) do
 						if v:IsA("BasePart") then
-							if v:FindFirstChild("Cost") then
+							if v:FindFirstChild("Cost") and v.Transparency == 0 then
 								if v.Cost.Value <= Player.leaderstats.Haters.Value then
 									Player.Character.HumanoidRootPart.CFrame = v.CFrame;
 								end;
@@ -232,6 +232,34 @@ AutoABF.MouseButton1Down:Connect(function()
 	else
 		_G.ABF = false;
 		AutoABF.Text = "Auto Buy Follower Buttons: Off";
+	end;
+end);
+_G.ABM = false;
+local AutoABM = Setup:CreateButton(GameUI, "Auto Buy Money Buttons: Off", Color3.new(1, 1, 0));
+AutoABM.MouseButton1Down:Connect(function()
+	if _G.ABM == false then
+		_G.ABM = true;
+		AutoABM.Text = "Auto Buy Money Buttons: On";
+		coroutine.resume(coroutine.create(function()
+			while task.wait() do
+				if _G.ABM == false then
+					break;
+				else
+					for i, v in pairs(YourTycoon.Purchases:GetChildren()) do
+						if v:IsA("BasePart") then
+							if v:FindFirstChild("Cost") and v.Transparency == 0 then
+								if v.Cost.Value <= Player.Data.Cash.Value then
+									Player.Character.HumanoidRootPart.CFrame = v.CFrame;
+								end;
+							end;
+						end;
+					end;
+				end;
+			end;
+		end));
+	else
+		_G.ABM = false;
+		AutoABM.Text = "Auto Buy Money Buttons: Off";
 	end;
 end);
 Setup:CreateClickSounds();
