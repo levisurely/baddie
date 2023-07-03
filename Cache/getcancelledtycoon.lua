@@ -262,4 +262,11 @@ AutoABM.MouseButton1Down:Connect(function()
 		AutoABM.Text = "Auto Buy Money Buttons: Off";
 	end;
 end);
+local character = Player.Character or Player.CharacterAdded:Wait();
+local humanoid = character:WaitForChild("Humanoid");
+humanoid.Seated:Connect(function(isSeated, seatPart)
+	if isSeated then
+		humanoid.Jump = true;
+	end;
+end);
 Setup:CreateClickSounds();
