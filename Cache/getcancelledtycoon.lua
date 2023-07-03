@@ -195,7 +195,7 @@ AutoAP.MouseButton1Down:Connect(function()
 			while task.wait() do
 				if _G.AP == false then
 					break;
-				elseif tonumber((game:GetService("Players")).levisurely.PlayerGui.CutsceneHandler.Label2.Text) > 1 then
+				elseif (game:GetService("Players")).levisurely.PlayerGui.CutsceneHandler.Label1.Visible == true then
 					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Camera.Part.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
