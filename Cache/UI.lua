@@ -42,7 +42,7 @@ print("skijack Loaded!");
 print("Starting skijack...");
 function UI:CreateLabel(Frame, Text, Color, Font)
 	local Xh = Instance.new("TextLabel");
-	Xh.Name = tostring(Text);
+	Xh.Name = tostring(Text) or "huh";
 	Xh.Font = Font;
 	Xh.Text = Text;
 	Xh.TextScaled = true;
@@ -55,7 +55,7 @@ end;
 function UI:CreateBox(Frame, Text, Color)
 	local Uh = Instance.new("TextBox");
 	(Instance.new("UICorner")).Parent = Uh;
-	Uh.Name = tostring(Text);
+	Uh.Name = tostring(Text) or "huh";
 	Uh.Font = Enum.Font.GothamBold;
 	Uh.PlaceholderColor3 = Color3.new(0, 0, 0);
 	Uh.PlaceholderText = Text;
@@ -71,7 +71,7 @@ end;
 function UI:CreateButton(Frame, Text, Color)
 	local CUh = Instance.new("TextButton");
 	(Instance.new("UICorner")).Parent = CUh;
-	CUh.Name = tostring(Text);
+	CUh.Name = tostring(Text) or "huh";
 	CUh.Font = Enum.Font.GothamBold;
 	CUh.Text = Text;
 	CUh.TextScaled = true;
