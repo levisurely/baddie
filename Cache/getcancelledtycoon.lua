@@ -180,7 +180,7 @@ AutoAP.MouseButton1Down:Connect(function()
 				if _G.AP == false then
 					break;
 				else
-					fireproximityprompt((YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
+					fireproximityprompt(YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
 			end;
 		end));
