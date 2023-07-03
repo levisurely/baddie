@@ -27,7 +27,7 @@ AutoPost.MouseButton1Down:Connect(function()
 		_G.APO = true;
 		AutoPost.Text = "Auto Post Opinions: On";
 		coroutine.resume(coroutine.create(function()
-			while wait() do
+			while task.wait() do
 				if _G.APO == false then
 					break;
 				else
@@ -47,7 +47,7 @@ AutoUpload.MouseButton1Down:Connect(function()
 		_G.AUO = true;
 		AutoUpload.Text = "Auto Upload: On";
 		coroutine.resume(coroutine.create(function()
-			while wait() do
+			while task.wait() do
 				if _G.AUO == false then
 					break;
 				else
@@ -70,7 +70,7 @@ AutoCollect.MouseButton1Down:Connect(function()
 		_G.AC = true;
 		AutoCollect.Text = "Auto Collect: On";
 		coroutine.resume(coroutine.create(function()
-			while wait(1) do
+			while task.wait() do
 				if _G.AC == false then
 					break;
 				elseif (game:GetService("Workspace")).Tycoons.Tycoon1.StaticItems.Belt1.Collector.ProxPart.Amt.Value > 0 then
@@ -90,7 +90,7 @@ AutoUIS.MouseButton1Down:Connect(function()
 		_G.AUIS = true;
 		AutoUIS.Text = "Auto Upgrade Internet Speed: On";
 		coroutine.resume(coroutine.create(function()
-			while wait() do
+			while task.wait() do
 				if _G.AUIS == false then
 					break;
 				else
@@ -114,7 +114,7 @@ AutoUWS.MouseButton1Down:Connect(function()
 		_G.AUWS = true;
 		AutoUWS.Text = "Auto Upgrade Worker Speed (Bedroom): On";
 		coroutine.resume(coroutine.create(function()
-			while wait() do
+			while task.wait() do
 				if _G.AUWS == false then
 					break;
 				else
@@ -138,7 +138,7 @@ AutoUAR.MouseButton1Down:Connect(function()
 		_G.AUAR = true;
 		AutoUAR.Text = "Auto Upgrade AD Reveue: On";
 		coroutine.resume(coroutine.create(function()
-			while wait() do
+			while task.wait() do
 				if _G.AUAR == false then
 					break;
 				else
@@ -162,7 +162,7 @@ AutoAP.MouseButton1Down:Connect(function()
 		_G.AP = true;
 		AutoAP.Text = "Auto Apology: On";
 		coroutine.resume(coroutine.create(function()
-			while wait() do
+			while task.wait() do
 				if _G.AP == false then
 					break;
 				else
