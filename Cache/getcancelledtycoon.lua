@@ -88,7 +88,28 @@ AutoCollect.MouseButton1Down:Connect(function()
 				if _G.AC == false then
 					break;
 				elseif YourTycoon.StaticItems.Belt1.Collector.ProxPart.Amt.Value > 0 then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt1.Collector.ProxPart.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Belt1.Collector.ProxPart.ProximityPrompt);
+
+									elseif YourTycoon.StaticItems.Belt2.Collector.ProxPart.Amt.Value > 0 then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt2.Collector.ProxPart.CFrame;
+					fireproximityprompt(YourTycoon.StaticItems.Belt2.Collector.ProxPart.ProximityPrompt);
+
+									elseif YourTycoon.StaticItems.Belt3.Collector.ProxPart.Amt.Value > 0 then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt3.Collector.ProxPart.CFrame;
+					fireproximityprompt(YourTycoon.StaticItems.Belt3.Collector.ProxPart.ProximityPrompt);
+
+									elseif YourTycoon.StaticItems.Belt4.Collector.ProxPart.Amt.Value > 0 then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt4.Collector.ProxPart.CFrame;
+					fireproximityprompt(YourTycoon.StaticItems.Belt4.Collector.ProxPart.ProximityPrompt);
+
+									elseif YourTycoon.StaticItems.Belt5.Collector.ProxPart.Amt.Value > 0 then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt5.Collector.ProxPart.CFrame;
+					fireproximityprompt(YourTycoon.StaticItems.Belt5.Collector.ProxPart.ProximityPrompt);
+
+									elseif YourTycoon.StaticItems.Belt6.Collector.ProxPart.Amt.Value > 0 then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Belt6.Collector.ProxPart.CFrame;
+					fireproximityprompt(YourTycoon.StaticItems.Belt6.Collector.ProxPart.ProximityPrompt);
 				end;
 			end;
 		end));
@@ -122,11 +143,11 @@ AutoUIS.MouseButton1Down:Connect(function()
 	end;
 end);
 _G.AUWS = false;
-local AutoUWS = Setup:CreateButton(GameUI, "Auto Upgrade Worker Speed (Bedroom): Off", Color3.new(1, 1, 0));
+local AutoUWS = Setup:CreateButton(GameUI, "Auto Upgrade Worker Speed: Off", Color3.new(1, 1, 0));
 AutoUWS.MouseButton1Down:Connect(function()
 	if _G.AUWS == false then
 		_G.AUWS = true;
-		AutoUWS.Text = "Auto Upgrade Worker Speed (Bedroom): On";
+		AutoUWS.Text = "Auto Upgrade Worker Speed: On";
 		coroutine.resume(coroutine.create(function()
 			while task.wait() do
 				if _G.AUWS == false then
@@ -142,7 +163,7 @@ AutoUWS.MouseButton1Down:Connect(function()
 		end));
 	else
 		_G.AUWS = false;
-		AutoUWS.Text = "Auto Upgrade Worker Speed (Bedroom): Off";
+		AutoUWS.Text = "Auto Upgrade Worker Speed: Off";
 	end;
 end);
 _G.AUAR = false;
@@ -180,6 +201,8 @@ AutoAP.MouseButton1Down:Connect(function()
 				if _G.AP == false then
 					break;
 				else
+					if game:GetService("Workspace").Tycoons.Tycoon5.StaticItems.Camera.MeshPart.Timer.TimerText == "￰"
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Camera.Part.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
 			end;
