@@ -15,6 +15,20 @@ for i, v in pairs((game:GetService("Workspace")).Tycoons:GetChildren()) do
 		if v:FindFirstChild("TycoonOwner") then
 			if v.TycoonOwner.Value == Player or v.TycoonOwner.Value == Player.Name then
 				YourTycoon = v;
+				return;
+			end;
+		end;
+	end;
+end;
+if YourTycoon == nil then
+	for i, v in pairs((game:GetService("Workspace")).Tycoons:GetChildren()) do
+		if v:IsA("Folder") then
+			if v:FindFirstChild("TycoonOwner") then
+				if v.TycoonOwner.Value == "None" then
+					game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Claim.Claim.CFrame;
+					YourTycoon = v;
+					return;
+				end;
 			end;
 		end;
 	end;
@@ -73,8 +87,8 @@ AutoCollect.MouseButton1Down:Connect(function()
 			while task.wait() do
 				if _G.AC == false then
 					break;
-				elseif (game:GetService("Workspace")).Tycoons.Tycoon1.StaticItems.Belt1.Collector.ProxPart.Amt.Value > 0 then
-					fireproximityprompt((game:GetService("Workspace")).Tycoons.Tycoon1.StaticItems.Belt1.Collector.ProxPart.ProximityPrompt);
+				elseif (YourTycoon.StaticItems.Belt1.Collector.ProxPart.Amt.Value > 0 then
+					fireproximityprompt((YourTycoon.StaticItems.Belt1.Collector.ProxPart.ProximityPrompt);
 				end;
 			end;
 		end));
@@ -166,7 +180,7 @@ AutoAP.MouseButton1Down:Connect(function()
 				if _G.AP == false then
 					break;
 				else
-					fireproximityprompt((game:GetService("Workspace")).Tycoons.Tycoon2.StaticItems.Camera.MeshPart.ProximityPrompt);
+					fireproximityprompt((YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
 			end;
 		end));
