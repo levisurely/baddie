@@ -195,7 +195,7 @@ AutoAP.MouseButton1Down:Connect(function()
 			while task.wait() do
 				if _G.AP == false then
 					break;
-				elseif tonumber((game:GetService("Players")).levisurely.PlayerGui.CutsceneHandler.Label2.Text) >= 1 then
+				elseif tonumber((game:GetService("Players")).levisurely.PlayerGui.CutsceneHandler.Label2.Text) > 1 then
 					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Camera.Part.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
@@ -220,7 +220,7 @@ AutoABF.MouseButton1Down:Connect(function()
 					for i, v in pairs(YourTycoon.FollowerAchievements:GetChildren()) do
 						if v:IsA("BasePart") then
 							if v:FindFirstChild("Cost") then
-								if v.Cost.Value >= Player.leaderstats.Haters.Value then
+								if v.Cost.Value <= Player.leaderstats.Haters.Value then
 									Player.Character.HumanoidRootPart.CFrame = v.CFrame;
 								end;
 							end;
