@@ -24,18 +24,13 @@ if YourTycoon == nil then
 	for i, v in pairs((game:GetService("Workspace")).Tycoons:GetChildren()) do
 		if v:IsA("Folder") then
 			if v:FindFirstChild("TycoonOwner") then
-				if v.TycoonOwner.Value == "None" then
+				if v.TycoonOwner.Value == "" then
 					Player.Character.HumanoidRootPart.CFrame = v.Claim.Claim.CFrame;
 					YourTycoon = v;
 					break;
 				end;
 			end;
 		end;
-	end;
-end;
-for i, v in pairs(game:GetDescendants()) do
-	if v:IsA("Seat") then
-		v.Position = Vector3.New(9999999, 999999, 99999);
 	end;
 end;
 print(YourTycoon);
