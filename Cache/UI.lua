@@ -250,6 +250,9 @@ local Button5=UI:CreateBox(GameUI, "Enter Audio ID Here", Color3.new(1, 1, 0));
 -- Rejoin Button
 local RejoinButton = UI:CreateButton(GameUI, "Rejoin", Color3.new(1, 1, 0));
 
+-- Anti AFK Button
+local AFKButton = UI:CreateButton(GameUI, "Anti AFK", Color3.new(1, 1, 0));
+
 --Theme Button
 local THEMEButton1=UI:CreateButton(UIUI, "Theme: Dark", Color3.new(0, 0.666667, 1));
 
@@ -279,6 +282,16 @@ end);
 RejoinButton.MouseButton1Down:Connect(function()
     RejoinButton.Text = "Rejoining...";
     game:GetService("TeleportService"):Teleport(game.PlaceId);
+end);
+
+AFKButton.MouseButton1Down:Connect(function()
+  	local vu = game:GetService("VirtualUser")
+	game:GetService("Players").LocalPlayer.Idled:connect(function()
+		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+		wait(1)
+		print("anti-afk")
+		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+	end)
 end);
 
 THEMEButton1.MouseButton1Down:Connect(function()
