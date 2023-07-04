@@ -22,6 +22,7 @@ local Games = {
 	[11113551747] = "statgrindingsimulator2",
 	[11915606459] = "thedifficultymachine_Revamp",
 	[13692314644] = "getcancelledtycoon",
+	[11596351062] = "famousrappertycoon",
 	[10652184030] = "jumpclicker"
 };
 local function Check()

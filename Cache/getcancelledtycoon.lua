@@ -139,6 +139,7 @@ AutoUIS.MouseButton1Down:Connect(function()
 end);
 _G.AUWS = false;
 local AutoUWS = Setup:CreateButton(GameUI, "Auto Upgrade Worker Speed: Off", Color3.new(1, 1, 0));
+AutoUWS.Visible = false;
 AutoUWS.MouseButton1Down:Connect(function()
 	if _G.AUWS == false then
 		_G.AUWS = true;
@@ -163,6 +164,7 @@ AutoUWS.MouseButton1Down:Connect(function()
 end);
 _G.AUAR = false;
 local AutoUAR = Setup:CreateButton(GameUI, "Auto Upgrade AD Reveue: Off", Color3.new(1, 1, 0));
+AutoUAR.Visible = false;
 AutoUAR.MouseButton1Down:Connect(function()
 	if _G.AUAR == false then
 		_G.AUAR = true;
@@ -195,7 +197,7 @@ AutoAP.MouseButton1Down:Connect(function()
 			while task.wait() do
 				if _G.AP == false then
 					break;
-				elseif (game:GetService("Players")).levisurely.PlayerGui.CutsceneHandler.Label1.Visible == true then
+				elseif (Player.PlayerGui.CutsceneHandler.Label1.Visible == true then
 					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Camera.Part.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
@@ -265,8 +267,8 @@ end);
 local character = Player.Character or Player.CharacterAdded:Wait();
 local humanoid = character:WaitForChild("Humanoid");
 humanoid.Seated:Connect(function(isSeated, seatPart)
-	if isSeated then
-		humanoid.Jump = true;
+	if isSeated==true then
+		humanoid.Sit = false;
 	end;
 end);
 Setup:CreateClickSounds();
