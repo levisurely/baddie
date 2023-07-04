@@ -24,7 +24,7 @@ if YourTycoon == nil then
 	for i, v in pairs((game:GetService("Workspace")).Tycoons:GetChildren()) do
 		if v:IsA("Folder") then
 			if v:FindFirstChild("TycoonOwner") then
-				if v.TycoonOwner.Value == "" then
+				if v.TycoonOwner.Value == "" or v.TycoonOwner.Value == "None" then
 					Player.Character.HumanoidRootPart.CFrame = v.Claim.Claim.CFrame;
 					YourTycoon = v;
 					break;

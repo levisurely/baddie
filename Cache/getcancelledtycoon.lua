@@ -24,7 +24,7 @@ if YourTycoon == nil then
 	for i, v in pairs((game:GetService("Workspace")).Tycoons:GetChildren()) do
 		if v:IsA("Folder") then
 			if v:FindFirstChild("TycoonOwner") then
-				if v.TycoonOwner.Value == "None" then
+				if v.TycoonOwner.Value == "None" or v.TycoonOwner.Value == "" then
 					Player.Character.HumanoidRootPart.CFrame = v.Claim.Claim.CFrame;
 					YourTycoon = v;
 					break;
@@ -197,7 +197,7 @@ AutoAP.MouseButton1Down:Connect(function()
 			while task.wait() do
 				if _G.AP == false then
 					break;
-				elseif (Player.PlayerGui.CutsceneHandler.Label1.Visible == true then
+				elseif Player.PlayerGui.CutsceneHandler.Label1.Visible == true then
 					Player.Character.HumanoidRootPart.CFrame = YourTycoon.StaticItems.Camera.Part.CFrame;
 					fireproximityprompt(YourTycoon.StaticItems.Camera.MeshPart.ProximityPrompt);
 				end;
@@ -267,7 +267,7 @@ end);
 local character = Player.Character or Player.CharacterAdded:Wait();
 local humanoid = character:WaitForChild("Humanoid");
 humanoid.Seated:Connect(function(isSeated, seatPart)
-	if isSeated==true then
+	if isSeated == true then
 		humanoid.Sit = false;
 	end;
 end);
