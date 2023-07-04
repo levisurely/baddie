@@ -25,6 +25,9 @@ local Games = {
 	[11596351062] = "famousrappertycoon",
 	[10652184030] = "jumpclicker"
 };
+if not game:IsLoaded() then
+	game.Loaded:Wait();
+end;
 local function Check()
 	local Supported = Games[game.PlaceId] or false;
 	if Supported ~= false then
