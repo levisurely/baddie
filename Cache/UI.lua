@@ -4,6 +4,7 @@ local Players = game:GetService("Players");
 local MS = game:GetService("MarketplaceService");
 local Player = Players.LocalPlayer;
 local PUI = Player.PlayerGui;
+local key = nil;
 if not game:GetService("RunService"):IsStudio() then
 	PUI = game.CoreGui;
 end;
@@ -223,6 +224,57 @@ local UIUI=UI:CreateMenu("UIskijack", CXolor, 10030, false);
 --Title Text For Main Menu
 local jackTitle=UI:CreateTitle(jackUI.Parent, "Welcome, "..Player.Name.."!");
 
+--Key Changer Textbox
+local KeyBox=UI:CreateBox(CharacterUI, "Enter Key Here", Color3.new(1, 0, 0));
+
+--Key Button
+local KeyButton=UI:CreateButton(UIUI, "Copy Key Link", Color3.new(1, 0, 0));
+
+local CKey = loadstring(game:HttpGet("https://pastebin.com/raw/3mwdnMs3"))();
+
+KeyBox.FocusLost:Connect(function()
+	if KeyBox.Text ~= nil and KeyBox.Text ~= "" and tostring(KeyBox.Text) then
+			if key == CKey then
+		KeyBox.Text="";
+		KeyBox.PlaceholderText="Correct Key";
+key=CKey;
+			else
+		KeyBox.Text="";
+		KeyBox.PlaceholderText="Incorrect Key";
+		local CS = Instance.new("Sound");
+		CS.SoundId="rbxassetid://160715357";
+		CS.Parent=KeyBox;
+		CS:Play();
+		CS.Ended:Connect(function()
+			CS:Destroy();
+		end);
+		wait(2);
+		KeyBox.PlaceholderText="Enter Key Here";
+			end;
+	else
+		KeyBox.Text="";
+		KeyBox.PlaceholderText="Failed To Check Key";
+		local CS = Instance.new("Sound");
+		CS.SoundId="rbxassetid://160715357";
+		CS.Parent=KeyBox;
+		CS:Play();
+		CS.Ended:Connect(function()
+			CS:Destroy();
+		end);
+		wait(2);
+		KeyBox.PlaceholderText="Enter Key Here";
+	end;
+end);
+
+KeyButton.MouseButton1Down:Connect(function()
+setclipboard("https://workink.net/1QoV/lk3lx4k5") or toclipboard("https://workink.net/1QoV/lk3lx4k5") or print("Not Supported For Copying Links")
+end);
+
+return wait() until key~=nil and key==CKey;
+
+KeyButton.Visible=false;
+KeyBox.Visible=false;
+
 --Title Text for Character Settings
 local CjackTitle=UI:CreateTitle(CharacterUI.Parent, "Character Settings");
 
@@ -231,6 +283,9 @@ local GjackTitle=UI:CreateTitle(GameUI.Parent, "Game Settings");
 
 --Title Text for UI Settings
 local UjackTitle=UI:CreateTitle(UIUI.Parent, "UI Settings");
+
+--Discord Button
+local DiscordButton1=UI:CreateButton(UIUI, "Copy Discord Link", Color3.new(0, 0.666667, 1));
 
 --WalkSpeed Changer Textbox
 local Button1=UI:CreateBox(CharacterUI, "Enter WalkSpeed Here", Color3.new(1, 0, 0));
@@ -305,6 +360,10 @@ THEMEButton1.MouseButton1Down:Connect(function()
 	for i,v in pairs(MainUI:GetChildren()) do
 		v.BackgroundColor3=CXolor;
 	end;
+end);
+
+DiscordButton1.MouseButton1Down:Connect(function()
+setclipboard("https://discord.gg/DPTHKB7hhx") or toclipboard("https://discord.gg/DPTHKB7hhx") or print("Not Supported For Copying Links")
 end);
 
 Button5.FocusLost:Connect(function()
