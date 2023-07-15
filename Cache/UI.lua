@@ -225,16 +225,16 @@ local UIUI=UI:CreateMenu("UIskijack", CXolor, 10030, false);
 local jackTitle=UI:CreateTitle(jackUI.Parent, "Welcome, "..Player.Name.."!");
 
 --Key Changer Textbox
-local KeyBox=UI:CreateBox(CharacterUI, "Enter Key Here", Color3.new(1, 0, 0));
+local KeyBox=UI:CreateBox(jackUI, "Enter Key Here", Color3.new(1, 0, 0));
 
 --Key Button
-local KeyButton=UI:CreateButton(UIUI, "Copy Key Link", Color3.new(1, 0, 0));
+local KeyButton=UI:CreateButton(jackUI, "Copy Key Link", Color3.new(1, 0, 0));
 
-local CKey = loadstring(game:HttpGet("https://pastebin.com/raw/3mwdnMs3"))();
-
+local CKey = loadstring(game:HttpGet("https://raw.githubusercontent.com/catgirIz/baddie/main/Cache/huh.lua"))();
+print(CKey)
 KeyBox.FocusLost:Connect(function()
 	if KeyBox.Text ~= nil and KeyBox.Text ~= "" and tostring(KeyBox.Text) then
-			if key == CKey then
+			if KeyBox.Text == CKey then
 		KeyBox.Text="";
 		KeyBox.PlaceholderText="Correct Key";
 key=CKey;
@@ -267,10 +267,11 @@ key=CKey;
 end);
 
 KeyButton.MouseButton1Down:Connect(function()
-setclipboard("https://workink.net/1QoV/lk3lx4k5") or toclipboard("https://workink.net/1QoV/lk3lx4k5") or print("Not Supported For Copying Links")
+setclipboard("https://workink.net/1QoV/lk3lx4k5");
+toclipboard("https://workink.net/1QoV/lk3lx4k5");
 end);
 
-return wait() until key~=nil and key==CKey;
+repeat wait() until key~=nil and key==CKey;
 
 KeyButton.Visible=false;
 KeyBox.Visible=false;
@@ -363,7 +364,8 @@ THEMEButton1.MouseButton1Down:Connect(function()
 end);
 
 DiscordButton1.MouseButton1Down:Connect(function()
-setclipboard("https://discord.gg/DPTHKB7hhx") or toclipboard("https://discord.gg/DPTHKB7hhx") or print("Not Supported For Copying Links")
+setclipboard("https://discord.gg/DPTHKB7hhx");
+toclipboard("https://discord.gg/DPTHKB7hhx");
 end);
 
 Button5.FocusLost:Connect(function()
