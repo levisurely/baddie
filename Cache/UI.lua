@@ -231,7 +231,7 @@ local KeyBox=UI:CreateBox(jackUI, "Enter Key Here", Color3.new(1, 0, 0));
 local KeyButton=UI:CreateButton(jackUI, "Copy Key Link", Color3.new(1, 0, 0));
 
 local CKey = loadstring(game:HttpGet("https://raw.githubusercontent.com/catgirIz/baddie/main/Cache/huh.lua"))();
-print(CKey)
+
 KeyBox.FocusLost:Connect(function()
 	if KeyBox.Text ~= nil and KeyBox.Text ~= "" and tostring(KeyBox.Text) then
 			if KeyBox.Text == CKey then
@@ -270,9 +270,9 @@ KeyButton.MouseButton1Down:Connect(function()
 setclipboard("https://workink.net/1QoV/lk3lx4k5");
 toclipboard("https://workink.net/1QoV/lk3lx4k5");
 end);
-
+Loading.Visible=false;
 repeat wait() until key~=nil and key==CKey;
-
+Loading.Visible=true;
 KeyButton.Visible=false;
 KeyBox.Visible=false;
 
