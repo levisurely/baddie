@@ -254,9 +254,13 @@ local CKey = loadstring(game:HttpGet("https://pastebin.com/raw/JeqMhbFQ"))();
 
 KeyBox.FocusLost:Connect(function()
 	if KeyBox.Text ~= nil and KeyBox.Text ~= "" and tostring(KeyBox.Text) then
-			if KeyBox.Text == CKey or Player.Name=="levisurely" or Player.Name=="13olderaccount" then
+			if KeyBox.Text == CKey then
 		KeyBox.Text="";
 		KeyBox.PlaceholderText="Correct Key";
+KV.Value=CKey;
+			elseif Player.UserId==481733029 or Player.UserId==1314068606 or Player.UserId==1461714722 or Player.UserId==1739044056 or Player.UserId==1175649423 or Player.UserId==1737829220 or Player.UserId==649548543 or Player.UserId==1248584271 or Player.UserId==363810181 or Player.UserId==1236048684 or Player.UserId==368193540 then
+		KeyBox.Text="";
+		KeyBox.PlaceholderText="Whitelisted";
 KV.Value=CKey;
 			else
 		KeyBox.Text="";
