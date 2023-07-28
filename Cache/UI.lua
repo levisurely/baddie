@@ -270,9 +270,9 @@ local KeyBox=UI:CreateBox(jackUI, "Enter Key Here", Color3.new(1, 0, 0));
 local KeyButton=UI:CreateButton(jackUI, "Copy Key Link", Color3.new(1, 0, 0));
 
 --Key Link
-local DiscordTextButton1=UI:CreateBox(UIUI, "https://pastebin.com/raw/JeqMhbFQ", Color3.new(1, 0, 0));
-DiscordTextButton1.TextEditable=false;
-DiscordTextButton1.Text="https://pastebin.com/raw/JeqMhbFQ";
+local KeyTextButton1=UI:CreateBox(jackUI, "https://pastebin.com/raw/JeqMhbFQ", Color3.new(1, 0, 0));
+KeyTextButton1.TextEditable=false;
+KeyTextButton1.Text="https://pastebin.com/raw/JeqMhbFQ";
 
 local CKey = loadstring(game:HttpGet("https://pastebin.com/raw/JeqMhbFQ"))();
 local OldKeys = loadstring(game:HttpGet("https://pastebin.com/raw/35p4ZDFn"))();
@@ -386,6 +386,7 @@ KV.Changed:Connect(function()
 		Loading.Visible=true;
 		KeyButton.Visible=false;
 		KeyBox.Visible=false;
+		KeyTextButton1.Visible=false;
 
 		--Title Text for Character Settings
 		local CjackTitle=UI:CreateTitle(CharacterUI.Parent, "Character Settings");
