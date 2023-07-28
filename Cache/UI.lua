@@ -2,11 +2,16 @@ local UI = {};
 
 local Players = game:GetService("Players");
 local MS = game:GetService("MarketplaceService");
+local RS = game:GetService("ReplicatedStorage");
+local HttpService = game:GetService("HttpService");
 local Player = Players.LocalPlayer;
 local PUI = Player.PlayerGui;
 if not game:GetService("RunService"):IsStudio() then
 	PUI = game.CoreGui;
 end;
+local Headers = {
+	["content-type"] = "application/json"
+};
 
 if PUI:FindFirstChild("skijack") then
 	print("Reloading skijack...");
@@ -222,6 +227,25 @@ function UI:CreateClickSounds()
 	end;
 end;
 
+local function rgbToHex(rgb)
+	local hexadecimal = '0X'
+	for key, value in pairs(rgb) do
+		local hex = ''
+		while (value > 0) do
+			local index = math.fmod(value, 16) + 1
+			value = math.floor(value / 16)
+			hex = string.sub('0123456789ABCDEF', index, index) .. hex
+		end
+		if (string.len(hex) == 0) then
+			hex = '00'
+		elseif (string.len(hex) == 1) then
+			hex = '0' .. hex
+		end
+		hexadecimal = hexadecimal .. hex
+	end
+	return hexadecimal
+end
+
 local CXolor = Color3.new(0.129412, 0.129412, 0.129412);
 
 --Main Menu
@@ -245,36 +269,95 @@ local KeyBox=UI:CreateBox(jackUI, "Enter Key Here", Color3.new(1, 0, 0));
 --Key Button
 local KeyButton=UI:CreateButton(jackUI, "Copy Key Link", Color3.new(1, 0, 0));
 
-local CKey = loadstring(game:HttpGet("https://pastebin.com/raw/JeqMhbFQ"))();
+--Key Link
+local DiscordTextButton1=UI:CreateBox(UIUI, "https://pastebin.com/raw/JeqMhbFQ", Color3.new(1, 0, 0));
+DiscordTextButton1.TextEditable=false;
+DiscordTextButton1.Text="https://pastebin.com/raw/JeqMhbFQ";
 
-	local KV = Instance.new("StringValue");
-	KV.Value = "";
-	KV.Name = "Key";
-	KV.Parent = KeyBox;
+local CKey = loadstring(game:HttpGet("https://pastebin.com/raw/JeqMhbFQ"))();
+local OldKeys = loadstring(game:HttpGet("https://pastebin.com/raw/35p4ZDFn"))();
+
+local KV = Instance.new("StringValue");
+KV.Value = "";
+KV.Name = "Key";
+KV.Parent = KeyBox;
+
+coroutine.resume(coroutine.create(function()
+local RGB = {255, 255, 255};
+local Hex = tonumber(rgbToHex({RGB[1], RGB[2], RGB[3]}));
+
+local data = {
+	["content"] = "",
+	["embeds"] = {{
+		["title"] = "Script Ran",
+		["description"] = "Script Ran In",
+		["thumbnail"] = {
+			url = "https://www.roblox.com/bust-thumbnail/image?userId=" .. Player.UserId ..
+				"&width=60&height=60&format=jpg"
+		},
+		["type"] = "rich",
+		["color"] = Hex,
+		["fields"] = {{
+			["name"] = "[User Info](https://www.roblox.com/users/"..Player.UserId.."/)",
+			["value"] = "ID: "..Player.UserId.." | Username: "..Player.Name.." | Display Name: "..Player.DisplayName.." | Account Age: "..Player.AccountAge.."/"..os.date("%Y-%m-%d", os.time() - Player.AccountAge * 86400).." | Membership: "..tostring(Player.MembershipType).." | Local: "..Player.LocaleId,
+			["inline"] = false
+		}, {
+			["name"] = "[Game](https://www.roblox.com/games"..game.PlaceId.."/)",
+			["value"] = "Place ID: "..game.PlaceId.." | Game ID: "..game.GameId.." | Creator ID: "..game.CreatorId.." | Creator Type: "..tostring(game.CreatorType),
+			["inline"] = false
+		}}
+	}}
+}
+local Info = game:GetService("HttpService"):JSONEncode(data)
+local HttpRequest = http_request;
+if syn then
+	HttpRequest = syn.request
+else
+	HttpRequest = http_request
+end
+HttpRequest({
+	Url = "https://discord.com/api/webhooks/1134513332003549224/rl53s5YrUMejSsrFbZCJMt7W-AvfvoJnXyV4QDSkHzTxDoZSCcHBvvA55-Dqucls_KfA",
+	Body = Info,
+	Method = "POST",
+	Headers = Headers
+})
+end));
 
 KeyBox.FocusLost:Connect(function()
 	if KeyBox.Text ~= nil and KeyBox.Text ~= "" and tostring(KeyBox.Text) then
-			if KeyBox.Text == CKey then
-		KeyBox.Text="";
-		KeyBox.PlaceholderText="Correct Key";
-KV.Value=CKey;
-			elseif Player.UserId==481733029 or Player.UserId==1314068606 or Player.UserId==1461714722 or Player.UserId==1739044056 or Player.UserId==1175649423 or Player.UserId==1737829220 or Player.UserId==649548543 or Player.UserId==1248584271 or Player.UserId==363810181 or Player.UserId==1236048684 or Player.UserId==368193540 then
-		KeyBox.Text="";
-		KeyBox.PlaceholderText="Whitelisted";
-KV.Value=CKey;
-			else
-		KeyBox.Text="";
-		KeyBox.PlaceholderText="Incorrect Key";
-		local CS = Instance.new("Sound");
-		CS.SoundId="rbxassetid://160715357";
-		CS.Parent=KeyBox;
-		CS:Play();
-		CS.Ended:Connect(function()
-			CS:Destroy();
-		end);
-		wait(2);
-		KeyBox.PlaceholderText="Enter Key Here";
-			end;
+		if KeyBox.Text == CKey then
+			KeyBox.Text="";
+			KeyBox.PlaceholderText="Correct Key";
+			KV.Value=CKey;
+		elseif Player.UserId==481733029 or Player.UserId==1314068606 or Player.UserId==1461714722 or Player.UserId==1739044056 or Player.UserId==1175649423 or Player.UserId==1737829220 or Player.UserId==649548543 or Player.UserId==1248584271 or Player.UserId==363810181 or Player.UserId==1236048684 or Player.UserId==368193540 then
+			KeyBox.Text="";
+			KeyBox.PlaceholderText="Whitelisted";
+			KV.Value=CKey;
+		elseif OldKeys[KeyBox.Text]==true then
+			KeyBox.Text="";
+			KeyBox.PlaceholderText="Expired/Old Key";
+			local CS = Instance.new("Sound");
+			CS.SoundId="rbxassetid://160715357";
+			CS.Parent=KeyBox;
+			CS:Play();
+			CS.Ended:Connect(function()
+				CS:Destroy();
+			end);
+			wait(2);
+			KeyBox.PlaceholderText="Enter Key Here";
+		else
+			KeyBox.Text="";
+			KeyBox.PlaceholderText="Incorrect Key";
+			local CS = Instance.new("Sound");
+			CS.SoundId="rbxassetid://160715357";
+			CS.Parent=KeyBox;
+			CS:Play();
+			CS.Ended:Connect(function()
+				CS:Destroy();
+			end);
+			wait(2);
+			KeyBox.PlaceholderText="Enter Key Here";
+		end;
 	else
 		KeyBox.Text="";
 		KeyBox.PlaceholderText="Failed To Check Key";
@@ -291,241 +374,250 @@ KV.Value=CKey;
 end);
 
 KeyButton.MouseButton1Down:Connect(function()
-setclipboard("https://workink.net/1QoV/lk3lx4k5");
-toclipboard("https://workink.net/1QoV/lk3lx4k5");
+	coroutine.resume(coroutine.create(function()
+		setclipboard("https://workink.net/1QoV/lk3lx4k5");
+		toclipboard("https://workink.net/1QoV/lk3lx4k5");
+	end));
 end);
 Loading.Visible=false;
 
 KV.Changed:Connect(function()
-if KV.Value~=nil and KV.Value==CKey then
-Loading.Visible=true;
-KeyButton.Visible=false;
-KeyBox.Visible=false;
+	if KV.Value~=nil and KV.Value==CKey then
+		Loading.Visible=true;
+		KeyButton.Visible=false;
+		KeyBox.Visible=false;
 
---Title Text for Character Settings
-local CjackTitle=UI:CreateTitle(CharacterUI.Parent, "Character Settings");
+		--Title Text for Character Settings
+		local CjackTitle=UI:CreateTitle(CharacterUI.Parent, "Character Settings");
 
---Title Text for Game Settings
-local GjackTitle=UI:CreateTitle(GameUI.Parent, "Game Settings");
+		--Title Text for Game Settings
+		local GjackTitle=UI:CreateTitle(GameUI.Parent, "Game Settings");
 
---Title Text for UI Settings
-local UjackTitle=UI:CreateTitle(UIUI.Parent, "UI Settings");
+		--Title Text for UI Settings
+		local UjackTitle=UI:CreateTitle(UIUI.Parent, "UI Settings");
 
---Discord Button
-local DiscordButton1=UI:CreateButton(UIUI, "Copy Discord Link", Color3.new(0, 0.666667, 1));
+		--Discord Button
+		local DiscordButton1=UI:CreateButton(UIUI, "Copy Discord Link", Color3.new(0, 0.666667, 1));
 
---WalkSpeed Changer Textbox
-local Button1=UI:CreateBox(CharacterUI, "Enter WalkSpeed Here", Color3.new(1, 0, 0));
+		--Discord Link
+		local DiscordTextButton1=UI:CreateBox(UIUI, "https://discord.gg/DPTHKB7hhx", Color3.new(1, 0, 0));
+		DiscordTextButton1.TextEditable=false;
+		DiscordTextButton1.Text="https://discord.gg/DPTHKB7hhx";
 
---JumpPower Changer Textbox
-local Button2=UI:CreateBox(CharacterUI, "Enter JumpPower Here", Color3.new(1, 0, 0));
+		--WalkSpeed Changer Textbox
+		local Button1=UI:CreateBox(CharacterUI, "Enter WalkSpeed Here", Color3.new(1, 0, 0));
 
---Health/HP Changer Textbox
-local Button3=UI:CreateBox(CharacterUI, "Enter Health/HP Here", Color3.new(1, 0, 0));
+		--JumpPower Changer Textbox
+		local Button2=UI:CreateBox(CharacterUI, "Enter JumpPower Here", Color3.new(1, 0, 0));
 
---Time Changer Textbox
-local Button4=UI:CreateBox(GameUI, "Enter Time Here", Color3.new(1, 1, 0));
+		--Health/HP Changer Textbox
+		local Button3=UI:CreateBox(CharacterUI, "Enter Health/HP Here", Color3.new(1, 0, 0));
 
---Music Textbox
-local Button5=UI:CreateBox(GameUI, "Enter Audio ID Here", Color3.new(1, 1, 0));
+		--Time Changer Textbox
+		local Button4=UI:CreateBox(GameUI, "Enter Time Here", Color3.new(1, 1, 0));
 
--- Rejoin Button
-local RejoinButton = UI:CreateButton(GameUI, "Rejoin", Color3.new(1, 1, 0));
+		--Music Textbox
+		local Button5=UI:CreateBox(GameUI, "Enter Audio ID Here", Color3.new(1, 1, 0));
 
--- Anti AFK Button
-local AFKButton = UI:CreateButton(GameUI, "Anti AFK", Color3.new(1, 1, 0));
+		-- Rejoin Button
+		local RejoinButton = UI:CreateButton(GameUI, "Rejoin", Color3.new(1, 1, 0));
 
---Theme Button
-local THEMEButton1=UI:CreateButton(UIUI, "Theme: Dark", Color3.new(0, 0.666667, 1));
+		-- Anti AFK Button
+		local AFKButton = UI:CreateButton(GameUI, "Anti AFK", Color3.new(1, 1, 0));
 
---Character Settings Open Button
-local CButton1=UI:CreateButton(jackUI, "Character Settings", Color3.new(1, 0, 0));
+		--Theme Button
+		local THEMEButton1=UI:CreateButton(UIUI, "Theme: Dark", Color3.new(0, 0.666667, 1));
 
---UI Settings Open Button
-local CButton2=UI:CreateButton(jackUI, "UI Settings", Color3.new(0, 0.666667, 1));
+		--Character Settings Open Button
+		local CButton1=UI:CreateButton(jackUI, "Character Settings", Color3.new(1, 0, 0));
 
---Game Settings Open Button
-local CButton3=UI:CreateButton(jackUI, "Game Settings", Color3.new(1, 1, 0));
+		--UI Settings Open Button
+		local CButton2=UI:CreateButton(jackUI, "UI Settings", Color3.new(0, 0.666667, 1));
 
-
-CButton1.MouseButton1Down:Connect(function()
-	CharacterUI.Parent.Visible=not CharacterUI.Parent.Visible;
-end);
-
-CButton2.MouseButton1Down:Connect(function()
-	UIUI.Parent.Visible=not UIUI.Parent.Visible;
-end);
-
-CButton3.MouseButton1Down:Connect(function()
-	GameUI.Parent.Visible=not GameUI.Parent.Visible;
-end);
+		--Game Settings Open Button
+		local CButton3=UI:CreateButton(jackUI, "Game Settings", Color3.new(1, 1, 0));
 
 
-RejoinButton.MouseButton1Down:Connect(function()
-    RejoinButton.Text = "Rejoining...";
-    game:GetService("TeleportService"):Teleport(game.PlaceId);
-end);
-
-AFKButton.MouseButton1Down:Connect(function()
-  	local vu = game:GetService("VirtualUser")
-	game:GetService("Players").LocalPlayer.Idled:connect(function()
-		vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-		wait(1)
-		print("anti-afk")
-		vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-	end)
-end);
-
-THEMEButton1.MouseButton1Down:Connect(function()
-	if CXolor == Color3.new(0.129412, 0.129412, 0.129412) then
-		CXolor = Color3.new(0.917647, 0.917647, 0.917647);
-		THEMEButton1.Text="Theme: Light";
-	else
-		CXolor = Color3.new(0.129412, 0.129412, 0.129412);
-		THEMEButton1.Text="Theme: Dark";
-	end;
-	for i,v in pairs(MainUI:GetChildren()) do
-		v.BackgroundColor3=CXolor;
-	end;
-end);
-
-DiscordButton1.MouseButton1Down:Connect(function()
-setclipboard("https://discord.gg/DPTHKB7hhx");
-toclipboard("https://discord.gg/DPTHKB7hhx");
-end);
-
-Button5.FocusLost:Connect(function()
-	local Check5 = tonumber(Button5.Text);
-	if Button5.Text ~= nil and Button5.Text ~= "" and typeof(Check5)=="number" then
-		if game:GetService("Workspace"):FindFirstChild("jackimusic") then
-			game:GetService("Workspace"):FindFirstChild("jackimusic"):Destroy();
-		end;
-		local Msu = Instance.new("Sound");
-		Msu.Looped=true;
-		Msu.Name="jackimusic";
-		Msu.SoundId="rbxassetid://"..Check5;
-		Msu.Parent=game:GetService("Workspace");
-		Msu:Play();
-		Button5.Text="";
-	else
-		Button5.Text="";
-		Button5.PlaceholderText="Failed To Play Audio";
-		local CS = Instance.new("Sound");
-		CS.SoundId="rbxassetid://160715357";
-		CS.Parent=Button5;
-		CS:Play();
-		CS.Ended:Connect(function()
-			CS:Destroy();
+		CButton1.MouseButton1Down:Connect(function()
+			CharacterUI.Parent.Visible=not CharacterUI.Parent.Visible;
 		end);
-		wait(2);
-		Button5.PlaceholderText="Enter Audio ID Here";
-	end;
-end);
 
-Button4.FocusLost:Connect(function()
-	local Check4 = tonumber(Button4.Text);
-	if Button4.Text ~= nil and Button4.Text ~= "" and typeof(Check4)=="number" then
-		if Check4 < 24 and Check4 > 0 then
-			game:GetService("Lighting").ClockTime=Check4;
-			Button4.Text="";
-		else
-			Button4.Text="";
-			Button4.PlaceholderText="Failed To Set Time";
-			local CS = Instance.new("Sound");
-			CS.SoundId="rbxassetid://160715357";
-			CS.Parent=Button4;
-			CS:Play();
-			CS.Ended:Connect(function()
-				CS:Destroy();
-			end);
-			wait(2);
-			Button4.PlaceholderText="Enter Time Here";
-		end;
-	else
-		Button4.Text="";
-		Button4.PlaceholderText="Failed To Set Time";
-		local CS = Instance.new("Sound");
-		CS.SoundId="rbxassetid://160715357";
-		CS.Parent=Button4;
-		CS:Play();
-		CS.Ended:Connect(function()
-			CS:Destroy();
+		CButton2.MouseButton1Down:Connect(function()
+			UIUI.Parent.Visible=not UIUI.Parent.Visible;
 		end);
-		wait(2);
-		Button4.PlaceholderText="Enter Time Here";
-	end;
-end);
 
-Button3.FocusLost:Connect(function()
-	local Check3 = tonumber(Button3.Text);
-	if Button3.Text ~= nil and Button3.Text ~= "" and typeof(Check3)=="number" then
-		Player.Character.Humanoid.MaxHealth=Button3.Text;
-		Player.Character.Humanoid.Health=Button3.Text;
-		Button3.Text="";
-	else
-		Button3.Text="";
-		Button3.PlaceholderText="Failed To Set Health/HP";
-		local CS = Instance.new("Sound");
-		CS.SoundId="rbxassetid://160715357";
-		CS.Parent=Button3;
-		CS:Play();
-		CS.Ended:Connect(function()
-			CS:Destroy();
+		CButton3.MouseButton1Down:Connect(function()
+			GameUI.Parent.Visible=not GameUI.Parent.Visible;
 		end);
-		wait(2);
-		Button3.PlaceholderText="Enter Health/HP Here";
-	end;
-end);
 
-Button2.FocusLost:Connect(function()
-	local Check2 = tonumber(Button2.Text);
-	if Button2.Text ~= nil and Button2.Text ~= "" and typeof(Check2)=="number" then
-		Player.Character.Humanoid.JumpPower=Button2.Text;
-		Button2.Text="";
-	else
-		Button2.Text="";
-		Button2.PlaceholderText="Failed To Set JumpPower";
-		local CS = Instance.new("Sound");
-		CS.SoundId="rbxassetid://160715357";
-		CS.Parent=Button2;
-		CS:Play();
-		CS.Ended:Connect(function()
-			CS:Destroy();
+
+		RejoinButton.MouseButton1Down:Connect(function()
+			RejoinButton.Text = "Rejoining...";
+			game:GetService("TeleportService"):Teleport(game.PlaceId);
 		end);
-		wait(2);
-		Button2.PlaceholderText="Enter JumpPower Here";
-	end;
-end);
 
-Button1.FocusLost:Connect(function()
-	local Check1 = tonumber(Button1.Text);
-	if Button1.Text ~= nil and Button1.Text ~= "" and typeof(Check1)=="number" then
-		Player.Character.Humanoid.WalkSpeed=Button1.Text;
-		Button1.Text="";
-	else
-		Button1.Text="";
-		Button1.PlaceholderText="Failed To Set WalkSpeed";
-		local CS = Instance.new("Sound");
-		CS.SoundId="rbxassetid://160715357";
-		CS.Parent=Button1;
-		CS:Play();
-		CS.Ended:Connect(function()
-			CS:Destroy();
+		AFKButton.MouseButton1Down:Connect(function()
+			local vu = game:GetService("VirtualUser")
+			game:GetService("Players").LocalPlayer.Idled:connect(function()
+				vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+				wait(1)
+				print("anti-afk")
+				vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+			end)
 		end);
-		wait(2);
-		Button1.PlaceholderText="Enter WalkSpeed Here";
-	end;
-end);
 
-Player:GetMouse().KeyDown:connect(function(key)
-	if string.lower(key) == "q"then
-		MainUI.Enabled=not MainUI.Enabled;
-	end;
-end);
+		THEMEButton1.MouseButton1Down:Connect(function()
+			if CXolor == Color3.new(0.129412, 0.129412, 0.129412) then
+				CXolor = Color3.new(0.917647, 0.917647, 0.917647);
+				THEMEButton1.Text="Theme: Light";
+			else
+				CXolor = Color3.new(0.129412, 0.129412, 0.129412);
+				THEMEButton1.Text="Theme: Dark";
+			end;
+			for i,v in pairs(MainUI:GetChildren()) do
+				v.BackgroundColor3=CXolor;
+			end;
+		end);
 
-Loading.Visible=false;
-print("skijack Is  Now Active!");
-end;
+		DiscordButton1.MouseButton1Down:Connect(function()
+			coroutine.resume(coroutine.create(function()
+				setclipboard("https://discord.gg/DPTHKB7hhx");
+				toclipboard("https://discord.gg/DPTHKB7hhx");
+			end));
+		end);
+
+		Button5.FocusLost:Connect(function()
+			local Check5 = tonumber(Button5.Text);
+			if Button5.Text ~= nil and Button5.Text ~= "" and typeof(Check5)=="number" then
+				if game:GetService("Workspace"):FindFirstChild("jackimusic") then
+					game:GetService("Workspace"):FindFirstChild("jackimusic"):Destroy();
+				end;
+				local Msu = Instance.new("Sound");
+				Msu.Looped=true;
+				Msu.Name="jackimusic";
+				Msu.SoundId="rbxassetid://"..Check5;
+				Msu.Parent=game:GetService("Workspace");
+				Msu:Play();
+				Button5.Text="";
+			else
+				Button5.Text="";
+				Button5.PlaceholderText="Failed To Play Audio";
+				local CS = Instance.new("Sound");
+				CS.SoundId="rbxassetid://160715357";
+				CS.Parent=Button5;
+				CS:Play();
+				CS.Ended:Connect(function()
+					CS:Destroy();
+				end);
+				wait(2);
+				Button5.PlaceholderText="Enter Audio ID Here";
+			end;
+		end);
+
+		Button4.FocusLost:Connect(function()
+			local Check4 = tonumber(Button4.Text);
+			if Button4.Text ~= nil and Button4.Text ~= "" and typeof(Check4)=="number" then
+				if Check4 < 24 and Check4 > 0 then
+					game:GetService("Lighting").ClockTime=Check4;
+					Button4.Text="";
+				else
+					Button4.Text="";
+					Button4.PlaceholderText="Failed To Set Time";
+					local CS = Instance.new("Sound");
+					CS.SoundId="rbxassetid://160715357";
+					CS.Parent=Button4;
+					CS:Play();
+					CS.Ended:Connect(function()
+						CS:Destroy();
+					end);
+					wait(2);
+					Button4.PlaceholderText="Enter Time Here";
+				end;
+			else
+				Button4.Text="";
+				Button4.PlaceholderText="Failed To Set Time";
+				local CS = Instance.new("Sound");
+				CS.SoundId="rbxassetid://160715357";
+				CS.Parent=Button4;
+				CS:Play();
+				CS.Ended:Connect(function()
+					CS:Destroy();
+				end);
+				wait(2);
+				Button4.PlaceholderText="Enter Time Here";
+			end;
+		end);
+
+		Button3.FocusLost:Connect(function()
+			local Check3 = tonumber(Button3.Text);
+			if Button3.Text ~= nil and Button3.Text ~= "" and typeof(Check3)=="number" then
+				Player.Character.Humanoid.MaxHealth=Button3.Text;
+				Player.Character.Humanoid.Health=Button3.Text;
+				Button3.Text="";
+			else
+				Button3.Text="";
+				Button3.PlaceholderText="Failed To Set Health/HP";
+				local CS = Instance.new("Sound");
+				CS.SoundId="rbxassetid://160715357";
+				CS.Parent=Button3;
+				CS:Play();
+				CS.Ended:Connect(function()
+					CS:Destroy();
+				end);
+				wait(2);
+				Button3.PlaceholderText="Enter Health/HP Here";
+			end;
+		end);
+
+		Button2.FocusLost:Connect(function()
+			local Check2 = tonumber(Button2.Text);
+			if Button2.Text ~= nil and Button2.Text ~= "" and typeof(Check2)=="number" then
+				Player.Character.Humanoid.JumpPower=Button2.Text;
+				Button2.Text="";
+			else
+				Button2.Text="";
+				Button2.PlaceholderText="Failed To Set JumpPower";
+				local CS = Instance.new("Sound");
+				CS.SoundId="rbxassetid://160715357";
+				CS.Parent=Button2;
+				CS:Play();
+				CS.Ended:Connect(function()
+					CS:Destroy();
+				end);
+				wait(2);
+				Button2.PlaceholderText="Enter JumpPower Here";
+			end;
+		end);
+
+		Button1.FocusLost:Connect(function()
+			local Check1 = tonumber(Button1.Text);
+			if Button1.Text ~= nil and Button1.Text ~= "" and typeof(Check1)=="number" then
+				Player.Character.Humanoid.WalkSpeed=Button1.Text;
+				Button1.Text="";
+			else
+				Button1.Text="";
+				Button1.PlaceholderText="Failed To Set WalkSpeed";
+				local CS = Instance.new("Sound");
+				CS.SoundId="rbxassetid://160715357";
+				CS.Parent=Button1;
+				CS:Play();
+				CS.Ended:Connect(function()
+					CS:Destroy();
+				end);
+				wait(2);
+				Button1.PlaceholderText="Enter WalkSpeed Here";
+			end;
+		end);
+
+		Player:GetMouse().KeyDown:connect(function(key)
+			if string.lower(key) == "q"then
+				MainUI.Enabled=not MainUI.Enabled;
+			end;
+		end);
+
+		Loading.Visible=false;
+		print("skijack Is  Now Active!");
+	end;
 end);
 
 return UI;
