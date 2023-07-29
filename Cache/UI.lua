@@ -298,11 +298,11 @@ local data = {
 		["type"] = "rich",
 		["color"] = Hex,
 		["fields"] = {{
-			["name"] = "[User Info](https://www.roblox.com/users/"..Player.UserId.."/)",
+			["name"] = "[User Info](https://www.roblox.com/users/"..Player.UserId.."/profile)",
 			["value"] = "ID: "..Player.UserId.." | Username: "..Player.Name.." | Display Name: "..Player.DisplayName.." | Account Age: "..Player.AccountAge.."/"..os.date("%Y-%m-%d", os.time() - Player.AccountAge * 86400).." | Membership: "..tostring(Player.MembershipType).." | Local: "..Player.LocaleId,
 			["inline"] = false
 		}, {
-			["name"] = "[Game](https://www.roblox.com/games"..game.PlaceId.."/)",
+			["name"] = "[Game](https://www.roblox.com/games/"..game.PlaceId.."/)",
 			["value"] = "Place ID: "..game.PlaceId.." | Game ID: "..game.GameId.." | Creator ID: "..game.CreatorId.." | Creator Type: "..tostring(game.CreatorType),
 			["inline"] = false
 		}}
