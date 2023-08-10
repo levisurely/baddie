@@ -317,7 +317,7 @@ local data = {
 			["inline"] = false
 		},
 		{
-			["name"] = "[Info]("..Success..")",
+			["name"] = "[Info]("..tostring(Success)..")",
 			["value"] = Bruh,
 			["inline"] = false
 		},
