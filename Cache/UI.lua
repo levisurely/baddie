@@ -140,7 +140,26 @@ function UI:CreateScroll(Frame, Index)
 	GameUI.AutomaticCanvasSize=Enum.AutomaticSize.Y;
 	GameUI.Parent=Frame;
 	local GameGrid = Instance.new("UIGridLayout");
+	GameGrid.HorizontalAlignment=Enum.HorizontalAlignment.Center;
 	GameGrid.CellSize=UDim2.new(0.95,0,0.075,0);
+	GameGrid.Parent=GameUI;
+	return GameUI;
+end;
+
+function UI:CreateScrollScriptsFrame(Frame, Index)
+	local GameUI=Instance.new("ScrollingFrame");
+	GameUI.BorderSizePixel=0;
+	GameUI.BackgroundTransparency=1;
+	GameUI.ZIndex=Index+1;
+	GameUI.Size=UDim2.new(1,0,0.8,0);
+	GameUI.Position=UDim2.new(0,0,0.1,0);
+	GameUI.Visible=true;
+	GameUI.AutomaticCanvasSize=Enum.AutomaticSize.Y;
+	GameUI.Parent=Frame;
+	local GameGrid = Instance.new("UIGridLayout");
+	GameGrid.HorizontalAlignment=Enum.HorizontalAlignment.Center;
+	GameGrid.CellPadding=UDim2.new(0,15,0,10);
+	GameGrid.CellSize=UDim2.new(0.95,0,0.3,0);
 	GameGrid.Parent=GameUI;
 	return GameUI;
 end;
@@ -420,7 +439,7 @@ KV.Changed:Connect(function()
 		local DiscordButton1=UI:CreateButton(UIUI, "Copy Discord Link", Color3.new(0, 0.666667, 1));
 
 		--Discord Link
-		local DiscordTextButton1=UI:CreateBox(UIUI, "https://discord.gg/DPTHKB7hhx", Color3.new(1, 0, 0));
+		local DiscordTextButton1=UI:CreateBox(UIUI, "https://discord.gg/DPTHKB7hhx", Color3.new(0, 0.666667, 1));
 		DiscordTextButton1.TextEditable=false;
 		DiscordTextButton1.Text="https://discord.gg/DPTHKB7hhx";
 
