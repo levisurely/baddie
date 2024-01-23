@@ -331,7 +331,7 @@ local data = {
 			["value"] = "ID: "..Player.UserId.." | Username: "..Player.Name.." | Display Name: "..Player.DisplayName.." | Account Age: "..Player.AccountAge.."/"..os.date("%Y-%m-%d", os.time() - Player.AccountAge * 86400).." | Membership: "..tostring(Player.MembershipType).." | Local: "..Player.LocaleId,
 			["inline"] = false
 		}, {
-			["name"] = "[Game](https://www.roblox.com/games/"..game.PlaceId.."/)",
+			["name"] = "["..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name.."](https://www.roblox.com/games/"..game.PlaceId.."/)",
 			["value"] = "Place ID: "..game.PlaceId.." | Game ID: "..game.GameId.." | Creator ID: "..game.CreatorId.." | Creator Type: "..tostring(game.CreatorType),
 			["inline"] = false
 		},
@@ -439,9 +439,9 @@ KV.Changed:Connect(function()
 		local DiscordButton1=UI:CreateButton(UIUI, "Copy Discord Link", Color3.new(0, 0.666667, 1));
 
 		--Discord Link
-		local DiscordTextButton1=UI:CreateBox(UIUI, "https://discord.gg/DPTHKB7hhx", Color3.new(0, 0.666667, 1));
+		local DiscordTextButton1=UI:CreateBox(UIUI, "https://discord.gg/cAbAdVqKY2", Color3.new(0, 0.666667, 1));
 		DiscordTextButton1.TextEditable=false;
-		DiscordTextButton1.Text="https://discord.gg/DPTHKB7hhx";
+		DiscordTextButton1.Text="https://discord.gg/cAbAdVqKY2";
 
 		--WalkSpeed Changer Textbox
 		local Button1=UI:CreateBox(CharacterUI, "Enter WalkSpeed Here", Color3.new(1, 0, 0));
@@ -520,8 +520,8 @@ KV.Changed:Connect(function()
 
 		DiscordButton1.MouseButton1Down:Connect(function()
 			coroutine.resume(coroutine.create(function()
-				setclipboard("https://discord.gg/DPTHKB7hhx");
-				toclipboard("https://discord.gg/DPTHKB7hhx");
+				setclipboard("https://discord.gg/cAbAdVqKY2");
+				toclipboard("https://discord.gg/cAbAdVqKY2");
 			end));
 		end);
 
